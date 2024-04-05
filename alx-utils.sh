@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-# Installs ALXSEs betty C linter into the ~/programs directory
-# The script assumes that ~/programs is in the PATH
+# Utilities for the ALXSE sofware Engineering programme
+
+# Betty
+# Installs betty linter into the ~/programs directory (assumed to be in PATH)
 cd ~/programs
 git clone https://github.com/alx-tools/Betty.git
 cd Betty
