@@ -38,3 +38,5 @@ sudo apt install -y default-jdk
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Clojure (language)
+brew install clojure/tools/clojure
+brew upgrade clojure/tools/clojure
