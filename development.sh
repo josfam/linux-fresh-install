@@ -10,7 +10,8 @@ sudo apt install -y \
 	bash \
 	curl \
 	rlwrap \
-	vim
+	vim \
+	git
 
 # Adds dependencies that are usually required when building Python from source
 sudo apt install -y \
