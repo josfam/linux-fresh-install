@@ -9,7 +9,8 @@ sudo apt install -y \
 	cmake \
 	bash \
 	curl \
-	rlwrap
+	rlwrap \
+	vim
 
 # Adds dependencies that are usually required when building Python from source
 sudo apt install -y \
