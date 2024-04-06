@@ -44,3 +44,6 @@ sudo apt install -y default-jdk
 # required dependencies: java, bash, curl, rlwrap, homebrew
 brew install clojure/tools/clojure
 brew upgrade clojure/tools/clojure
+
+## Leiningen for clojure
+sudo apt install -y leiningen
