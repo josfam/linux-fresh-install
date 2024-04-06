@@ -32,7 +32,7 @@ sudo apt install -y \
 		 zlib1g-dev
 
 # Valgrind
-sudo apt install valgrind
+sudo apt install -y valgrind
 
 # Java
 sudo apt install -y default-jdk
@@ -49,3 +49,5 @@ brew upgrade clojure/tools/clojure
 
 ## Leiningen for clojure
 sudo apt install -y leiningen
+
+zload # source .zshrc file
