@@ -39,6 +39,8 @@ sudo apt install -y default-jdk
 
 # HomeBrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+(echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> ~/.zshrc
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Clojure (language)
 # required dependencies: java, bash, curl, rlwrap, homebrew
