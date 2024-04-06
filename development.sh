@@ -11,7 +11,8 @@ sudo apt install -y \
 	curl \
 	rlwrap \
 	vim \
-	git
+	git \
+	libopengl0
 
 # Adds dependencies that are usually required when building Python from source
 sudo apt install -y \
