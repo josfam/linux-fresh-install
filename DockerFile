@@ -4,11 +4,67 @@ FROM ubuntu:latest
 # Update and upgrade
 RUN apt-get update && apt-get upgrade -y
 
-# Install zsh and oh-my-zsh
-RUN apt-get install -y zsh \
-&& sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Install software properties common
+RUN apt-get install -y software-properties-common
+
+# adds ubuntu universe and multiverse repos
+RUN add-apt-repository universe -y \
+	&& add-apt-repository multiverse -y
+
+# install essential dev tools
+RUN apt-get install -y \
+	build-essential \
+	cmake \
+	bash \
+	curl \
+	rlwrap \
+	vim \
+	git \
+	libopengl0 \
+	sudo \
+	wget
+
+# Adds dependencies that are usually required when building Python from source
+RUN apt-get install -y \
+	pkg-config \
+	python3-tk \
+	libsqlite3-dev \
+	libncurses5-dev \
+	libgdbm-dev \
+	libbz2-dev \
+	libdb-dev \
+	uuid-dev \
+	libffi-dev \
+	liblzma-dev \
+	libreadline-dev \
+	libssl-dev \
+	tk-dev \
+	zlib1g-dev \
+	libnss3-dev
+
+# Install zsh
+RUN apt-get install -y zsh
 
 # set zsh as the default shell
 RUN chsh -s $(which zsh)
+
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# install python 3.12 from source
+RUN wget https://www.python.org/ftp/python/3.12.5/Python-3.12.5.tar.xz \
+	-O /tmp/Python-3.12.5.tar.xz
+
+RUN cd /tmp/ \
+	&& tar -xvf Python-3.12.5.tar.xz \
+	&& cd Python-3.12.5 \
+	&& ./configure \
+	&& make \
+	&& sudo make install
+
+# install pip
+RUN apt-get python3-pip
+
+# default location
+WORKDIR $HOME
 
 CMD [ "zsh" ]
