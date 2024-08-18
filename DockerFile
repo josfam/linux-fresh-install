@@ -1,0 +1,14 @@
+# official ubuntu image (https://hub.docker.com/_/ubuntu) as base
+FROM ubuntu:latest
+
+# Update and upgrade
+RUN apt-get update && apt-get upgrade -y
+
+# Install zsh and oh-my-zsh
+RUN apt-get install -y zsh \
+&& sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# set zsh as the default shell
+RUN chsh -s $(which zsh)
+
+CMD [ "zsh" ]
