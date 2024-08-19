@@ -91,15 +91,20 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - \
 # install typescript
 RUN sudo npm install -g typescript
 
-# clean up old dependencies
-RUN sudo apt-get -y autoremove
-
 # pull in a custom .zshrc config file.
 RUN wget https://raw.githubusercontent.com/josfam/homedir/main/.zshrc -O /home/ubuntu/.zshrc \
 	&& zsh -c "source /home/ubuntu/.zshrc"
 
 # pull in a custom .vimrc config file.
 RUN wget https://raw.githubusercontent.com/josfam/homedir/main/.vimrc -O /home/ubuntu/.vimrc
+
+# install most recent and stable version of git.
+RUN sudo add-apt-repository -y ppa:git-core/ppa \
+	&& sudo apt-get update \
+	&& sudo apt-get install git -y
+
+# clean up old dependencies
+RUN sudo apt-get -y autoremove
 
 # default location
 WORKDIR /home/ubuntu/
