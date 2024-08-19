@@ -62,7 +62,8 @@ RUN wget https://www.python.org/ftp/python/3.12.5/Python-3.12.5.tar.xz \
 	&& make \
 	&& sudo make install \
 	&& cd .. \
-	&& rm -rf Python-3.12.5
+	&& rm -rf Python-3.12.5 \
+	&& rm Python-3.12.5.tar.xz
 
 # install pip
 RUN apt-get install -y python3-pip
