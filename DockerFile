@@ -52,6 +52,14 @@ RUN chsh -s $(which zsh)
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+# Create 'ubuntu' user if they do not exist, and don't give a password
+RUN id -u ubuntu &>/dev/null || \
+	useradd -m -s /bin/zsh ubuntu \
+	&& echo "ubuntu ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+# Switch to the 'ubuntu' user, and go to their home directory
+USER ubuntu
+
 # install python 3.12 from source and clean up installation files
 RUN wget https://www.python.org/ftp/python/3.12.5/Python-3.12.5.tar.xz \
 	-O /tmp/Python-3.12.5.tar.xz \
@@ -64,6 +72,9 @@ RUN wget https://www.python.org/ftp/python/3.12.5/Python-3.12.5.tar.xz \
 	&& cd .. \
 	&& sudo rm -rf Python-3.12.5 \
 	&& rm Python-3.12.5.tar.xz
+
+# go to user's home directory (useful for later config files)
+RUN cd /home/ubuntu
 
 # install pip
 RUN sudo apt-get install -y python3-pip
