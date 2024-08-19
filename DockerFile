@@ -44,14 +44,6 @@ RUN sudo apt-get install -y \
 	zlib1g-dev \
 	libnss3-dev
 
-# Install zsh
-RUN sudo apt-get install -y zsh
-
-# set zsh as the default shell
-RUN chsh -s $(which zsh)
-
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 # Create 'ubuntu' user if they do not exist, and don't give a password
 RUN id -u ubuntu &>/dev/null || \
 	useradd -m -s /bin/zsh ubuntu \
@@ -59,6 +51,13 @@ RUN id -u ubuntu &>/dev/null || \
 
 # Switch to the 'ubuntu' user, and go to their home directory
 USER ubuntu
+
+# Install zsh and oh-my-zsh
+RUN sudo apt-get install -y zsh
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# set zsh as the default shell
+RUN sudo chsh -s $(which zsh)
 
 # install python 3.12 from source and clean up installation files
 RUN wget https://www.python.org/ftp/python/3.12.5/Python-3.12.5.tar.xz \
