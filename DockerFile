@@ -71,6 +71,15 @@ RUN pip3 install bpython \
 	&& pip3 install requests \
 	&& pip3 install flask
 
+# install nodejs
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - \
+	&& apt-get install nodejs -y
+
+# install typescript
+RUN npm install -g typescript
+
+# clean up old dependencies
+RUN sudo apt-get -y autoremove
 
 # default location
 WORKDIR /home/ubuntu/
