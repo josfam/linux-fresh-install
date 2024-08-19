@@ -73,6 +73,6 @@ RUN pip3 install bpython \
 
 
 # default location
-WORKDIR $HOME
+WORKDIR /home/ubuntu/
 
 CMD [ "zsh" ]
