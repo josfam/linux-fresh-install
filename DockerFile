@@ -27,7 +27,7 @@ RUN apt-get install -y \
 	wget
 
 # Adds dependencies that are usually required when building Python from source
-RUN apt-get install -y \
+RUN sudo apt-get install -y \
 	pkg-config \
 	python3-tk \
 	libsqlite3-dev \
@@ -45,7 +45,7 @@ RUN apt-get install -y \
 	libnss3-dev
 
 # Install zsh
-RUN apt-get install -y zsh
+RUN sudo apt-get install -y zsh
 
 # set zsh as the default shell
 RUN chsh -s $(which zsh)
@@ -62,11 +62,11 @@ RUN wget https://www.python.org/ftp/python/3.12.5/Python-3.12.5.tar.xz \
 	&& make \
 	&& sudo make install \
 	&& cd .. \
-	&& rm -rf Python-3.12.5 \
+	&& sudo rm -rf Python-3.12.5 \
 	&& rm Python-3.12.5.tar.xz
 
 # install pip
-RUN apt-get install -y python3-pip
+RUN sudo apt-get install -y python3-pip
 
 # install python packages
 RUN pip3 install bpython \
@@ -76,10 +76,10 @@ RUN pip3 install bpython \
 
 # install nodejs
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - \
-	&& apt-get install nodejs -y
+	&& sudo apt-get install nodejs -y
 
 # install typescript
-RUN npm install -g typescript
+RUN sudo npm install -g typescript
 
 # clean up old dependencies
 RUN sudo apt-get -y autoremove
