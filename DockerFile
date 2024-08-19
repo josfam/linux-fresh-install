@@ -50,19 +50,27 @@ RUN chsh -s $(which zsh)
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# install python 3.12 from source
+# install python 3.12 from source and clean up installation files
 RUN wget https://www.python.org/ftp/python/3.12.5/Python-3.12.5.tar.xz \
-	-O /tmp/Python-3.12.5.tar.xz
-
-RUN cd /tmp/ \
+	-O /tmp/Python-3.12.5.tar.xz \
+	&& cd /tmp/ \
 	&& tar -xvf Python-3.12.5.tar.xz \
 	&& cd Python-3.12.5 \
 	&& ./configure \
 	&& make \
-	&& sudo make install
+	&& sudo make install \
+	&& cd .. \
+	&& rm -rf Python-3.12.5
 
 # install pip
-RUN apt-get python3-pip
+RUN apt-get install -y python3-pip
+
+# install python packages
+RUN pip3 install bpython \
+	&& pip3 install black \
+	&& pip3 install requests \
+	&& pip3 install flask
+
 
 # default location
 WORKDIR $HOME
