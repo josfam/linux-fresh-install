@@ -95,6 +95,13 @@ RUN sudo npm install -g typescript
 # clean up old dependencies
 RUN sudo apt-get -y autoremove
 
+# pull in a custom .zshrc config file.
+RUN wget https://raw.githubusercontent.com/josfam/homedir/main/.zshrc -O /home/ubuntu/.zshrc \
+	&& zsh -c "source /home/ubuntu/.zshrc"
+
+# pull in a custom .vimrc config file.
+RUN wget https://raw.githubusercontent.com/josfam/homedir/main/.vimrc -O /home/ubuntu/.vimrc
+
 # default location
 WORKDIR /home/ubuntu/
 
