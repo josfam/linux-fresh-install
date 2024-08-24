@@ -1,4 +1,4 @@
-# Ubuntu image with python3, zsh, nodejs, typescript, vim
+# Ubuntu image with python3, zsh, nodejs, typescript, vim, mongodb
 
 # official ubuntu image (https://hub.docker.com/_/ubuntu) as base
 FROM ubuntu:latest
@@ -105,6 +105,22 @@ RUN wget https://raw.githubusercontent.com/josfam/homedir/main/.vimrc -O /home/u
 RUN sudo add-apt-repository -y ppa:git-core/ppa \
 	&& sudo apt-get update \
 	&& sudo apt-get install git -y
+
+# install mongodb and pin the package(s) at the currently installed version
+# source: https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
+RUN sudo apt-get install gnupg
+RUN curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \
+   sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
+   --dearmor \
+   && echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list \
+   && sudo apt-get update \
+   && sudo apt-get install -y mongodb-org \
+   && echo "mongodb-org hold" | sudo dpkg --set-selections \
+   && echo "mongodb-org-database hold" | sudo dpkg --set-selections \
+   && echo "mongodb-org-server hold" | sudo dpkg --set-selections \
+   && echo "mongodb-mongosh hold" | sudo dpkg --set-selections \
+   && echo "mongodb-org-mongos hold" | sudo dpkg --set-selections \
+   && echo "mongodb-org-tools hold" | sudo dpkg --set-selections
 
 # install vimplug for vim plugins
 RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
