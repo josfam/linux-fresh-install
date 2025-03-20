@@ -38,15 +38,15 @@ sudo apt install -y valgrind
 sudo apt install -y default-jdk
 
 # HomeBrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
-&& eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
+# && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# Clojure (language)
-# required dependencies: java, bash, curl, rlwrap, homebrew
-brew install clojure/tools/clojure
-brew upgrade clojure/tools/clojure
+# # Clojure (language)
+# # required dependencies: java, bash, curl, rlwrap, homebrew
+# brew install clojure/tools/clojure
+# brew upgrade clojure/tools/clojure
 
-## Leiningen for clojure
-sudo apt install -y leiningen
+# ## Leiningen for clojure
+# sudo apt install -y leiningen
 
 zload # source .zshrc file
