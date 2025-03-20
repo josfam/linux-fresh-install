@@ -14,7 +14,7 @@ sudo apt install brave-browser
 
 ## Chrome
 cd ~/programs
-# Thid .deb file is only as current as it is updated manually (this may not be
+# This .deb file is only as current as it is updated manually (this may not be
 # the latest one)
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install -y ./google-chrome-stable_current_amd64.deb
