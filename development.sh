@@ -37,6 +37,9 @@ sudo apt install -y valgrind
 # Java
 sudo apt install -y default-jdk
 
+# Install zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 # HomeBrew
 # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
 # && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
