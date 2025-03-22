@@ -37,6 +37,10 @@ sudo apt install -y valgrind
 # Java
 sudo apt install -y default-jdk
 
+# nvm and nodejs
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+nvm install 22
+
 # HomeBrew
 # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
 # && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
