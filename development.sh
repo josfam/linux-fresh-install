@@ -41,6 +41,9 @@ sudo apt install -y default-jdk
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 nvm install 22
 
+# vim plugin manager
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 # HomeBrew
 # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
 # && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
