@@ -5,6 +5,7 @@ sudo apt install -y zsh \
 && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Gogh colors
+# bash -c  "$(wget -qO- https://git.io/vQgMr)" 
 #
 # Everblush (122)
 # Everforest Dark Hard (123)
