@@ -56,3 +56,5 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 # ## Leiningen for clojure
 # sudo apt install -y leiningen
 
+# postgresql installation
+sudo apt install postgresql
