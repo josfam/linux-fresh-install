@@ -12,6 +12,7 @@ sudo apt install -y \
 	rlwrap \
 	vim \
 	git \
+	git-lfs \
 	libopengl0 \
 	python3-dev
 
