@@ -33,6 +33,10 @@ sudo apt install -y \
 		 tk-dev \
 		 zlib1g-dev
 
+# Niceties
+sudo apt install -y \
+		trash-cli
+
 # Valgrind
 sudo apt install -y valgrind
 
