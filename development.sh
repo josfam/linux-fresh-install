@@ -45,10 +45,12 @@ sudo apt install -y default-jdk
 
 # nvm and nodejs
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-nvm install 22
+nvm install 24
 
 # vim plugin manager
+# note: remember to run :PlugInstall when you next open vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 
 # HomeBrew
 # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
@@ -69,18 +71,28 @@ sudo apt install postgresql
 sudo apt install -y tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-# create tmux configuration file and populate it with basic settings
-touch ~/.tmux.conf
-echo """# List of plugins
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+cat > ~/.tmux.conf << 'EOF'
+# List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plutin 'tmux-plugins/tmux-continuum'
 
-# Other examples:
-
+## Other examples:
 # set -g @plugin 'github_username/plugin_name'
 # set -g @plugin 'github_username/plugin_name#branch'
 # set -g @plugin 'git@github.com:user/plugin'
 # set -g @plugin 'git@bitbucket.com:user/plugin'
 
+# tmux-resurrect settings
+set -g @resurrect-strategy-vim 'session'
+set -g @resurrect-capture-pane-contents 'on'
+
+# tmux-continuum settings
+set -g @continuum-restore 'on'
+set -g @continuum-save-interval '5'
+
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-run '~/.tmux/plugins/tpm/tpm'""" > ~/.tmux.conf
+run '~/.tmux/plugins/tpm/tpm'
+EOF
