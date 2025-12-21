@@ -18,24 +18,33 @@ sudo apt install -y \
 
 # Adds dependencies that are usually required when building Python from source
 sudo apt install -y \
-		 pkg-config \
-		 python3-tk \
-		 libsqlite3-dev \
-		 libncurses5-dev \
-		 libgdbm-dev \
-		 libbz2-dev \
-		 libdb-dev \
-		 uuid-dev \
-		 libffi-dev \
-		 liblzma-dev \
-		 libreadline-dev \
-		 libssl-dev \
-		 tk-dev \
-		 zlib1g-dev
+	pkg-config \
+	python3-tk \
+	libsqlite3-dev \
+	libncurses5-dev \
+	libgdbm-dev \
+	libbz2-dev \
+	libdb-dev \
+	uuid-dev \
+	libffi-dev \
+	liblzma-dev \
+	libreadline-dev \
+	libssl-dev \
+	tk-dev \
+	zlib1g-dev
 
 # Niceties
 sudo apt install -y \
-		trash-cli
+	trash-cli
+
+# postgresql
+sudo apt install -y \
+	libpq-dev \
+	postgresql \
+	postgresql-contrib
+## start and enable postgresql
+sudo systemctl start postgresql
+sudo systemctl enable postgresql
 
 # Valgrind
 sudo apt install -y valgrind
@@ -92,6 +101,9 @@ set -g @resurrect-capture-pane-contents 'on'
 # tmux-continuum settings
 set -g @continuum-restore 'on'
 set -g @continuum-save-interval '5'
+
+# mouse settings
+set -g mouse on
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
