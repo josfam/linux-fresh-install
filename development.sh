@@ -1,37 +1,37 @@
 #!/usr/bin/env bash
-# For software-development/coding tools
+# Installations for *my* commonly-used software-development/coding tools
 
 sudo apt update
 
 # General
 sudo apt install -y \
+	bash \
 	build-essential \
 	cmake \
-	bash \
 	curl \
-	rlwrap \
-	vim \
 	git \
 	git-lfs \
 	libopengl0 \
-	python3-dev
+	python3-dev \
+	rlwrap \
+	vim
 
 # Adds dependencies that are usually required when building Python from source
 sudo apt install -y \
-	pkg-config \
-	python3-tk \
-	libsqlite3-dev \
-	libncurses5-dev \
-	libgdbm-dev \
 	libbz2-dev \
+	libgdbm-dev \
 	libdb-dev \
-	uuid-dev \
 	libffi-dev \
 	liblzma-dev \
+	libncurses5-dev \
 	libreadline-dev \
+	libsqlite3-dev \
 	libssl-dev \
+	pkg-config \
+	python3-tk \
 	tk-dev \
-	zlib1g-dev
+	uuid-dev \
+	zlib1g-dev \
 
 # Niceties
 sudo apt install -y \
