@@ -3,18 +3,33 @@
 
 sudo apt update
 
+# adds ubuntu universe and multiverse repos
+sudo add-apt-repository universe -y
+sudo add-apt-repository multiverse -y
+
 # General
 sudo apt install -y \
 	bash \
 	build-essential \
 	cmake \
 	curl \
-	git \
 	git-lfs \
 	libopengl0 \
 	python3-dev \
 	rlwrap \
 	vim
+
+# Install the latest git
+sudo add-apt-repository -y ppa:git-core/ppa
+sudo apt-get update
+sudo apt-get install git -y
+
+# General git configs
+git config --global commit.gpgsign true
+git config --global init.defaultBranch main
+git config --global core.editor vim
+git config --global gpg.format ssh
+git config --global user.signingkey "$HOME/.ssh/id_ed25519.pub"
 
 # Adds dependencies that are usually required when building Python from source
 sudo apt install -y \
